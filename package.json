@@ -15,5 +15,9 @@
     "component"
   ],
   "author": "ouentai",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ouentai/vue-ouen-google-map/issues"
+  },
+  "homepage": "https://github.com/ouentai/vue-ouen-google-map#readme"
 }
