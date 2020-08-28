@@ -1,0 +1,19 @@
+{
+  "name": "vue-ouen-modal",
+  "version": "1.0.0",
+  "description": "simple modal for vue component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "vue": "^2.6.11"
+  },
+  "keywords": [
+    "vue",
+    "modal",
+    "component"
+  ],
+  "author": "ouentai",
+  "license": "MIT"
+}
