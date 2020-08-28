@@ -7,9 +7,11 @@
 - import & register components
   ``` demo.vue
   <script>
-  import MRoot from './VModal';
-  import MBox  from './VModalBox';
-  import MPos  from './VModalPosition';
+  import {
+    VModal as MRoot ,
+    VModalBox as MBox ,
+    VModalPosition as MPos ,
+  } from 'vue-ouen-modal';
 
   export default {
     components: {
@@ -188,12 +190,12 @@
 
   - example
     ``` .javascript
-    import Positionable from './mixin/Positionable' ;
+    import mixinName from 'vue-ouen-modal/mixin/Positionable' ;
 
     export default {
       name: 'yourComponent',
       mixins: [
-        Positionable ,
+        mixinName ,
       ],
       ~~~~
     };
