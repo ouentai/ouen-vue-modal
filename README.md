@@ -1,6 +1,10 @@
-# @ouen/vue_modal
+# @ouen/vue-ouen-modal
 
 ## Basic usage / Documentation
+
+### Install
+- npm
+  `npm install https://github.com/ouentai/vue-ouen-modal`
 
 ### Quickstart (Webpack, Vue-cli, Nuxt)
 
@@ -70,6 +74,15 @@
 
 
 - example
+
+  - always open modal with v-if of parent component or vue-router
+    ``` demo.vue
+    <template>
+      <MRoot open>
+        any content
+      </MRoot>
+    </template>
+    ```
 
   - only modal box
     ``` demo.vue
