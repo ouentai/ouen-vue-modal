@@ -16,6 +16,7 @@
     VModalBox as MBox ,
     VModalPosition as MPos ,
     VSimpleModalBox as SBox ,
+    VSimpleModalPosition as SPos ,
   } from 'vue-ouen-modal';
 
   export default {
@@ -24,6 +25,7 @@
       MBox  ,
       MPos  ,
       SBox  ,
+      SPos  ,
     },
   };
   <script>
@@ -70,6 +72,14 @@
       >
       any content
     </SBox>
+
+    <SPos
+      open
+      overflowY='scroll'
+      maxHeight='90vh'
+      >
+      any content
+    </SPos>
   </template>
   ```
 
