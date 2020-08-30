@@ -15,6 +15,7 @@
     VModal as MRoot ,
     VModalBox as MBox ,
     VModalPosition as MPos ,
+    VSimpleModalBox as SBox ,
   } from 'vue-ouen-modal';
 
   export default {
@@ -22,6 +23,7 @@
       MRoot ,
       MBox  ,
       MPos  ,
+      SBox  ,
     },
   };
   <script>
@@ -60,6 +62,14 @@
       </MBox>
 
     </MRoot>
+
+    <SBox
+      open
+      overflowY='scroll'
+      maxHeight='90vh'
+      >
+      any content
+    </SBox>
   </template>
   ```
 
@@ -71,6 +81,7 @@
   - VModal : Discribe a dark back ground and has method of close function.
   - VModalBox : Simple Box.
   - VModalPosition : Set position for your contents.
+  - Simple series components are expected to be used alone, they don't need VModal component as their parent.
 
 
 - example
@@ -186,7 +197,11 @@
       - hideHeader : boolean : デフォルトのヘッダーを非表示にする
       - size : string : ['sm', 'md', 'lg', 'xl', 'auto']のどれか
       - width : string : css で使う文字列 : 無効文字列を入れるとstyle.widthを設定しない
+      - minWidth : string : widthに同じ
+      - maxWidth : string : widthに同じ
       - heigt : string : widthに同じ
+      - minHeight : string : widthに同じ
+      - maxHeight : string : widthに同じ
       - bgColor : string : css で使う文字列 : 文字列'null'でstyle.backgroundColorを設定しない
       - padding : string : widthに同じ
       - overflowX : string : widthに同じ
@@ -195,6 +210,9 @@
       - default
       - header
     - output : なし
+  - VSimpleModalBox : VModal + VModalBox
+    - VModal と VModalBox にあるinterface全部使える
+    - VModal の props.bgColor は 名前が衝突しているので modalBgColor に変更されている
 
 
 ## Advanced usage

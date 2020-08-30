@@ -14,7 +14,11 @@
       - hideHeader : boolean : デフォルトのヘッダーを非表示にする
       - size : string : ['sm', 'md', 'lg', 'xl', 'auto']のどれか
       - width : string : css で使う文字列 : 無効文字列を入れるとstyle.widthを設定しない
+      - minWidth : string : widthに同じ
+      - maxWidth : string : widthに同じ
       - heigt : string : widthに同じ
+      - minHeight : string : widthに同じ
+      - maxHeight : string : widthに同じ
       - bgColor : string : css で使う文字列 : 文字列'null'でstyle.backgroundColorを設定しない
       - padding : string : widthに同じ
       - overflowX : string : widthに同じ
@@ -63,7 +67,11 @@ export default {
       validator : (val) => ['sm', 'md', 'lg', 'xl', 'auto'].includes(val) ,
     },
     width : String ,
+    minWidth : String ,
+    maxWidth : String ,
     height : String ,
+    minHeight : String ,
+    maxHeight : String ,
     bgColor : String ,
     borderRadius : String ,
     padding : String ,
@@ -75,7 +83,11 @@ export default {
       const obj = {
         borderRadius : this.borderRadius || '.3rem' ,
         width : this.localWidth ,
+        minWidth : this.minWidth ,
+        maxWidth : this.maxWidth ,
         height : this.height || 'auto' ,
+        minHeight : this.minHeight ,
+        maxHeight : this.maxHeight ,
         padding : this.padding || '1rem' ,
         overflowX : this.overflowX ,
         overflowY : this.overflowY ,
