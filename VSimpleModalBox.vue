@@ -6,17 +6,16 @@
 
   interface
     - VModal と VModalBox を参照 : 両方のものを使用できる
-    - VModal の props.bgColor は 名前が衝突しているので modalBgColor に変更されている
+    - props.modalBgColor : modal自体の背景色
+    - props.bgColor : boxの背景色
 -->
 
 <template>
-  <div :style='{zIndex}' class='modal-frame'>
+  <div :style='ModalableMixin_style_1'>
     <div
       v-if='ifState'
-      v-show='open'
       ref='modal-bg'
-      :style='{backgroundColor:modalBgColor}'
-      class='modal-bg'
+      :style='ModalableMixin_style_2'
       @click='clickBg'
       >
 
@@ -43,24 +42,16 @@
 </template>
 
 <script>
+import Modalable from './mixin/Modalable';
 import Positionable from './mixin/Positionable';
 
 export default {
   name: 'VSimpleModalBox',
   mixins: [
+    Modalable ,
     Positionable ,
   ],
   props: {
-    // modal part
-    open : Boolean ,
-    zIndex : Number ,
-    openIf : Boolean ,
-    disabledClose : Boolean ,
-    modalBgColor : {
-      type : String ,
-      default : 'rgba(0,0,0,.5)'
-    },
-
     // box part
     hideHeader : Boolean ,
     size : {
@@ -80,9 +71,6 @@ export default {
     overflowY : String ,
   },
   computed: {
-    // modal part
-    ifState () { return this.openIf ? this.open : true ; },
-
     // box part
     contentStyle() {
       const obj = {
@@ -112,32 +100,10 @@ export default {
              '500px' ;
     },
   },
-  methods: {
-    close() {
-      this.$emit('update:open', false);
-      this.$emit('close');
-    },
-    clickBg(e) {
-      if (!this.disabledClose && e.target===this.$refs['modal-bg']) {
-        this.close();
-      }
-    },
-  },
 };
 </script>
 
 <style scoped>
-.modal-frame {
-  position:fixed;
-  top: 0;
-  left: 0;
-}
-
-.modal-bg {
-  width: 100vw;
-  height: 100vh;
-}
-
 .vm-box {
   --close-item-width : 40px;
 }

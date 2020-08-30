@@ -13,7 +13,7 @@
       - zIndex : Number : このmodalのz-indexを指定できる : default では指定されない
       - openIf : boolean : 開閉の際 true:v-if / false:v-show を使うか : default false
       - disabledClose : boolean : modal背景クリックでの閉じを無効化する : default false
-      - bgColor : string : 背景色の設定 : cssのrgba()の文字列 : default rgba(0,0,0,0.5)
+      - modalBgColor : string : 背景色の設定 : cssのrgba()の文字列 : default rgba(0,0,0,0.5)
     - output
       - emit : update:open : false : modalのcloseイベント
       - emit : close : void : modalのcloseイベント
