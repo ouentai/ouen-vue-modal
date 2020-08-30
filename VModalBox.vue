@@ -16,6 +16,9 @@
       - width : string : css で使う文字列 : 無効文字列を入れるとstyle.widthを設定しない
       - heigt : string : widthに同じ
       - bgColor : string : css で使う文字列 : 文字列'null'でstyle.backgroundColorを設定しない
+      - padding : string : widthに同じ
+      - overflowX : string : widthに同じ
+      - overflowY : string : widthに同じ
     - input : slot
       - default
       - header
@@ -63,6 +66,9 @@ export default {
     height : String ,
     bgColor : String ,
     borderRadius : String ,
+    padding : String ,
+    overflowX : String ,
+    overflowY : String ,
   },
   computed: {
     contentStyle() {
@@ -70,6 +76,9 @@ export default {
         borderRadius : this.borderRadius || '.3rem' ,
         width : this.localWidth ,
         height : this.height || 'auto' ,
+        padding : this.padding || '1rem' ,
+        overflowX : this.overflowX || 'scroll' ,
+        overflowY : this.overflowY || 'scroll' ,
       };
       if (this.bgColor !== 'null') {
         obj.backgroundColor = this.bgColor || '#FFF' ;
