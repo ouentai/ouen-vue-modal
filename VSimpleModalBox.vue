@@ -5,7 +5,7 @@
     - シンプルにこのコンポーネントだけを設置する目的で使用する
 
   interface
-    - VModal と VModalBox を参照 : 両方のものを使用できる
+    - ModalableMixin と VModalBox を参照 : 両方のものを使用できる
     - props.modalBgColor : modal自体の背景色
     - props.bgColor : boxの背景色
 -->

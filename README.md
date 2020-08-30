@@ -74,7 +74,7 @@
   ```
 
 
-- usage point
+### usage point
   - VModal component must be ***top level*** of other Modal Items.
   - VModal component is multi use OK.
   - If you need, other component can be in VModal component as vue slot.
@@ -140,7 +140,7 @@
     ```
 
 
-- interface
+### interface
 
   - VModal as MRoot
     - input : props
@@ -148,7 +148,7 @@
       - zIndex : Number : このmodalのz-indexを指定できる : default では指定されない
       - openIf : boolean : 開閉の際 true:v-if / false:v-show を使うか : default false
       - disabledClose : boolean : modal背景クリックでの閉じを無効化する : default false
-      - bgColor : string : 背景色の設定 : cssのrgba()の文字列 : default rgba(0,0,0,0.5)
+      - modalBgColor : string : 背景色の設定 : cssのrgba()の文字列 : default rgba(0,0,0,0.5)
     - output
       - emit : update:open : false : modalのcloseイベント
       - emit : close : void : modalのcloseイベント
@@ -161,7 +161,7 @@
           :zIndex='3'
           openIf
           disabledClose
-          bgColor='#0F0'
+          modalBgColor='#0F0'
           >
         </MRoot>
       </template>
@@ -211,13 +211,52 @@
       - header
     - output : なし
   - VSimpleModalBox : VModal + VModalBox
-    - VModal と VModalBox にあるinterface全部使える
-    - VModal の props.bgColor は 名前が衝突しているので modalBgColor に変更されている
-
+    - ModalableMixin と VModalBox を参照 : 両方のものを使用できる
+    - props.modalBgColor : modal自体の背景色
+    - props.bgColor : boxの背景色
+  - VSimpleModalPosition : VModal + VModalPosition
+    - ModalableMixin と PositionableMixin を参照 : 両方のものを使用できる
 
 ## Advanced usage
 
-- Positionable.js @mixin folder
+### Modalable.js @mixin folder
+
+  - This
+    - is mixin object to add modal function to your components.
+    - needs 2 ***top lebel*** block element (like div) to add modal function of your component. See below expamle.
+
+  - example
+    ``` .javascript
+    import mixinName from 'vue-ouen-modal/mixin/Positionable' ;
+
+    export default {
+      name: 'yourComponent',
+      mixins: [
+        mixinName ,
+      ],
+      ~~~~
+    };
+    ```
+    ```
+    <template>
+      <div :style='ModalableMixin_style_1'>
+        <div
+          v-if='ifState'
+          ref='modal-bg'
+          :style='ModalableMixin_style_2'
+          @click='clickBg'
+          >
+
+          <slot/> <!-- any your contents -->
+
+        </div>
+      </div>
+
+    </template>
+    ```
+
+
+### Positionable.js @mixin folder
 
   - This
     - is mixin object to add position setting function to your component.
