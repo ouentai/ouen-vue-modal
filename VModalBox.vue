@@ -77,8 +77,8 @@ export default {
         width : this.localWidth ,
         height : this.height || 'auto' ,
         padding : this.padding || '1rem' ,
-        overflowX : this.overflowX || 'scroll' ,
-        overflowY : this.overflowY || 'scroll' ,
+        overflowX : this.overflowX ,
+        overflowY : this.overflowY ,
       };
       if (this.bgColor !== 'null') {
         obj.backgroundColor = this.bgColor || '#FFF' ;
