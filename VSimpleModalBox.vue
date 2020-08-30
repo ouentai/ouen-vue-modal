@@ -6,6 +6,7 @@
 
   interface
     - VModal と VModalBox を参照 : 両方のものを使用できる
+    - VModal の props.bgColor は 名前が衝突しているので modalBgColor に変更されている
 -->
 
 <template>
@@ -14,7 +15,7 @@
       v-if='ifState'
       v-show='open'
       ref='modal-bg'
-      :style='{backgroundColor:bgColor}'
+      :style='{backgroundColor:modalBgColor}'
       class='modal-bg'
       @click='clickBg'
       >
@@ -45,10 +46,7 @@
 import Positionable from './mixin/Positionable';
 
 export default {
-  name: 'VModalBox',
-  inject: {
-    closeModal : 'closeModal' ,
-  },
+  name: 'VSimpleModalBox',
   mixins: [
     Positionable ,
   ],
@@ -58,7 +56,7 @@ export default {
     zIndex : Number ,
     openIf : Boolean ,
     disabledClose : Boolean ,
-    bgColor : {
+    modalBgColor : {
       type : String ,
       default : 'rgba(0,0,0,.5)'
     },
