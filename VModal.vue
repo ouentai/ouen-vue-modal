@@ -7,7 +7,7 @@
     - 複数設置に対応
     - 親コンポーネントから :open.sync='変数' をつけるだけ
 
-  interface
+  interface : mixin modalable の interface
     - input : props
       - open : boolean : modalを開くか閉じるか
       - zIndex : Number : このmodalのz-indexを指定できる : default では指定されない
@@ -20,13 +20,11 @@
 -->
 
 <template>
-  <div :style='{zIndex}' class='modal-frame'>
+  <div :style='ModalableMixin_style_1'>
     <div
       v-if='ifState'
-      v-show='open'
       ref='modal-bg'
-      :style='{backgroundColor:bgColor}'
-      class='modal-bg'
+      :style='ModalableMixin_style_2'
       @click='clickBg'
       >
 
@@ -37,50 +35,12 @@
 </template>
 
 <script>
+import Modalable from './mixin/Modalable';
+
 export default {
   name: 'VModal',
-  provide() {
-    // リアクティブな状態でproviedeする方法
-    const obj = {};
-    Object.defineProperty(obj,'closeModal',{enumerable:true,get:()=>this.close});
-    return obj ;
-  },
-  props: {
-    open : Boolean ,
-    zIndex : Number ,
-    openIf : Boolean ,
-    disabledClose : Boolean ,
-    bgColor : {
-      type : String ,
-      default : 'rgba(0,0,0,.5)'
-    },
-  },
-  computed: {
-    ifState () { return this.openIf ? this.open : true ; },
-  },
-  methods: {
-    close() {
-      this.$emit('update:open', false);
-      this.$emit('close');
-    },
-    clickBg(e) {
-      if (!this.disabledClose && e.target===this.$refs['modal-bg']) {
-        this.close();
-      }
-    },
-  },
+  mixins: [
+    Modalable ,
+  ],
 };
 </script>
-
-<style scoped>
-.modal-frame {
-  position:fixed;
-  top: 0;
-  left: 0;
-}
-
-.modal-bg {
-  width: 100vw;
-  height: 100vh;
-}
-</style>
