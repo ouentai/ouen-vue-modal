@@ -38,12 +38,6 @@ export default {
     x : String ,
     y : String ,
   },
-  data() {
-    return {
-      PositionableMixin_width : '0px' ,
-      PositionableMixin_height: '0px' ,
-    };
-  },
   computed: {
     PositionableMixin_style() {
       const obj = {
@@ -55,13 +49,17 @@ export default {
         obj.zIndex = this.zIndex ;
       }
 
+      let yCenter = '0' ;
+      let xCenter = '0' ;
+
       // set vertical positon
       if (this.yPos==='top') {
         obj.top = this.y || '0' ;
       } else if (this.yPos==='bottom') {
         obj.bottom = this.y || '0' ;
       } else if (this.yPos==='center') {
-        obj.top = `calc( (100vh - ${this.PositionableMixin_height}) / 2 + ${this.y||'0px'} )`
+        obj.top = `calc( 50vh + ${this.y||'0px'})`;
+        yCenter = '-50%' ;
       }
 
       // set horizontal position
@@ -70,19 +68,13 @@ export default {
       } else if (this.xPos==='right') {
         obj.right = this.x || '0' ;
       } else if (this.xPos==='center') {
-        obj.left = `calc( (100vw - ${this.PositionableMixin_width}) / 2 + ${this.x||'0px'} )`
+        obj.left = `calc( 50vw + ${this.x||'0px'})`;
+        xCenter = '-50%' ;
       }
 
+      obj.transform = `transLate(${xCenter},${yCenter})`;
+
       return obj ;
-    },
-  },
-  beforeUpdate() {
-    this.PositionableMixin_setSize();
-  },
-  methods: {
-    PositionableMixin_setSize() {
-      this.PositionableMixin_width  = this.$el.clientWidth  + 'px' ;
-      this.PositionableMixin_height = this.$el.clientHeight + 'px' ;
     },
   },
 };
