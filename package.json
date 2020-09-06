@@ -9,6 +9,10 @@
   "dependencies": {
     "vue": "^2.6.11"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ouentai/vue-ouen-stylish-elements.git"
+  },
   "keywords": [
     "vue",
     "modal",
