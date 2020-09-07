@@ -20,15 +20,15 @@
 -->
 
 <template>
-    <div
-      v-if='ifState'
-      :style='ModalableMixin_style'
-      @click='clickBg'
-      >
+  <div
+    v-if='ifState'
+    :style='ModalableMixin_style'
+    @click='clickBg'
+    >
 
-      <slot/>
+    <slot/>
 
-    </div>
+  </div>
 </template>
 
 <script>

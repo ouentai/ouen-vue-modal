@@ -15,8 +15,8 @@
     VModal as MRoot ,
     VModalBox as MBox ,
     VModalPosition as MPos ,
-    VSimpleModalBox as SBox ,
-    VSimpleModalPosition as SPos ,
+    VSModalBox as SBox ,
+    VSModalPosition as SPos ,
   } from 'vue-ouen-modal';
 
   export default {
@@ -91,15 +91,15 @@
   - VModal : Discribe a dark back ground and has method of close function.
   - VModalBox : Simple Box.
   - VModalPosition : Set position for your contents.
-  - Simple series components are expected to be used alone, they don't need VModal component as their parent.
+  - Simple series components (named V**S**Modal~~) are expected to be used alone, they don't need VModal component as their parent.
 
 
 - example
 
-  - always open modal with v-if or vue-router
+  - always open modal, control it with v-if or vue-router
     ``` demo.vue
     <template>
-      <MRoot open v-if='bool'>
+      <MRoot open v-if='bool>
         any content
       </MRoot>
     </template>

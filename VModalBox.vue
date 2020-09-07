@@ -32,19 +32,19 @@
 <template>
   <div :style='PositionableMixin_style'>
 
-  <div :style='contentStyle' class='vm-box'>
+    <div :style='contentStyle' class='vm-box'>
 
-    <slot name='header' v-if='!hideHeader'>
-      <div class='d-flex'>
-        <div class='header-content'></div>
-        <div class='header-close' @click='close'><span>×</span></div>
-      </div>
-      <hr>
-    </slot>
+      <slot name='header' v-if='!hideHeader'>
+        <div class='d-flex'>
+          <div class='header-content'></div>
+          <div class='header-close' @click='close'><span>×</span></div>
+        </div>
+        <hr>
+      </slot>
 
-    <slot/>
+      <slot/>
 
-  </div>
+    </div>
 
   </div>
 </template>
