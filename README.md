@@ -96,10 +96,10 @@
 
 - example
 
-  - always open modal with v-if of parent component or vue-router
+  - always open modal with v-if or vue-router
     ``` demo.vue
     <template>
-      <MRoot open>
+      <MRoot open v-if='bool'>
         any content
       </MRoot>
     </template>
@@ -233,7 +233,7 @@
 
   - This
     - is mixin object to add modal function to your components.
-    - needs 2 ***top lebel*** block element (like div) to add modal function of your component. See below expamle.
+    - needs a ***top lebel*** block element (like div) to add modal function of your component. See below expamle.
 
   - example
     ``` .javascript
@@ -249,19 +249,15 @@
     ```
     ```
     <template>
-      <div :style='ModalableMixin_style_1'>
         <div
           v-if='ifState'
-          ref='modal-bg'
-          :style='ModalableMixin_style_2'
+          :style='ModalableMixin_style'
           @click='clickBg'
           >
 
           <slot/> <!-- any your contents -->
 
         </div>
-      </div>
-
     </template>
     ```
 

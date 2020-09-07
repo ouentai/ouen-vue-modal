@@ -20,18 +20,15 @@
 -->
 
 <template>
-  <div :style='ModalableMixin_style_1'>
     <div
       v-if='ifState'
-      ref='modal-bg'
-      :style='ModalableMixin_style_2'
+      :style='ModalableMixin_style'
       @click='clickBg'
       >
 
       <slot/>
 
     </div>
-  </div>
 </template>
 
 <script>

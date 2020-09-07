@@ -11,33 +11,21 @@
 
   使い方
     - mixinする
-    - コンポーネントのルートエレメントを2つ必要とする block 要素ならOK : 基本 div
-    - top root にstyleを設定する : <div :style='ModalableMixin_style_1'>
-    - 2nd root に次の要素を設定する
-      - style : object : ModalableMixin_style_2 : required
+    - コンポーネントのルートエレメントを必要とする block 要素ならOK : 基本 div
+      - style : object : ModalableMixin_style : required
       - v-if  : ifState : props.openIf で制御する場合に必要
-      - ref : string : 'modal-bg' : @clickを使う場合に必要
       - @click : function : clickBg : 背景クリックで閉じる処理
-      <div
-        v-if='ifState'
-        ref='modal-bg'
-        :style='ModalableMixin_style_2'
-        @click='clickBg'
-        >
     - 設置例
       <template>
-        <div :style='ModalableMixin_style_1'>
           <div
             v-if='ifState'
-            ref='modal-bg'
-            :style='ModalableMixin_style_2'
+            :style='ModalableMixin_style'
             @click='clickBg'
             >
 
             <slot/> <!-- any your contents -->
 
           </div>
-        </div>
       </template>
     - 親コンポーネントでpropsを指定する
 
@@ -72,17 +60,12 @@ export default {
     },
   },
   computed: {
-    ModalableMixin_style_1() {
+    ModalableMixin_style() {
       const obj = {
         zIndex : this.zIndex ,
         position : 'fixed' ,
         top : 0 ,
         left : 0 ,
-      };
-      return obj ;
-    },
-    ModalableMixin_style_2() {
-      const obj = {
         width  : '100vw' ,
         height : '100vh' ,
         backgroundColor : this.modalBgColor ,
@@ -98,7 +81,7 @@ export default {
       this.$emit('close');
     },
     clickBg(e) {
-      if (!this.disabledClose && e.target===this.$refs['modal-bg']) {
+      if (!this.disabledClose && e.target===this.$el) {
         this.close();
       }
     },

@@ -9,11 +9,9 @@
 -->
 
 <template>
-  <div :style='ModalableMixin_style_1'>
     <div
       v-if='ifState'
-      ref='modal-bg'
-      :style='ModalableMixin_style_2'
+      :style='ModalableMixin_style'
       @click='clickBg'
       >
 
@@ -22,8 +20,6 @@
       </div>
 
     </div>
-  </div>
-
 </template>
 
 <script>
@@ -31,7 +27,7 @@ import Modalable from './mixin/Modalable';
 import Positionable from './mixin/Positionable';
 
 export default {
-  name: 'VSimpleModalPosition',
+  name: 'VSModalPosition',
   mixins: [
     Modalable ,
     Positionable ,
