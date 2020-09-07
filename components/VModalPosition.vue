@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import Positionable from './mixin/Positionable';
+import Positionable from '../mixin/Positionable';
 
 export default {
   name: 'VModalPosition',

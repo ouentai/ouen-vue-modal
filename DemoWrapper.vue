@@ -50,9 +50,11 @@
 </template>
 
 <script>
-import VModal from './VModal';
-import VMBox  from './VModalBox';
-import VMPos  from './VModalPosition';
+import {
+  VModal         as VModal ,
+  VModalBox      as VMBox  ,
+  VModalPosition as VMPos  ,
+} from './index';
 
 export default {
   name: 'Demo',

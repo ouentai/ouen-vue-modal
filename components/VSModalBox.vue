@@ -1,66 +1,55 @@
 <!--
   コンポーネントの機能
-    - modalの box 役割
-    - Positionableの位置指定機能をMixinしている
-    - width/heightでサイズを指定できる
-    - sizeで簡易的に幅を指定できる : widthがない時のみ
-    - 背景色を指定できる
-    - borderRadiusを指定できる
-    - header領域を表示OFFにできる
-    - header用のスロットがある
+    - VModal + VModalBox 役割
+    - VModalにネストする必要がない
+    - シンプルにこのコンポーネントだけを設置する目的で使用する
 
   interface
-    - input : props
-      - hideHeader : boolean : デフォルトのヘッダーを非表示にする
-      - size : string : ['sm', 'md', 'lg', 'xl', 'auto']のどれか
-      - width : string : css で使う文字列 : 無効文字列を入れるとstyle.widthを設定しない
-      - minWidth : string : widthに同じ
-      - maxWidth : string : widthに同じ
-      - heigt : string : widthに同じ
-      - minHeight : string : widthに同じ
-      - maxHeight : string : widthに同じ
-      - bgColor : string : css で使う文字列 : 文字列'null'でstyle.backgroundColorを設定しない
-      - padding : string : widthに同じ
-      - overflowX : string : widthに同じ
-      - overflowY : string : widthに同じ
-    - input : slot
-      - default
-      - header
-    - output : なし
+    - ModalableMixin と VModalBox を参照 : 両方のものを使用できる
+    - props.modalBgColor : modal自体の背景色
+    - props.bgColor : boxの背景色
 -->
 
 <template>
-  <div :style='PositionableMixin_style'>
+    <div
+      v-if='ifState'
+      :style='ModalableMixin_style'
+      @click='clickBg'
+      >
 
-    <div :style='contentStyle' class='vm-box'>
+      <div :style='PositionableMixin_style'>
 
-      <slot name='header' v-if='!hideHeader'>
-        <div class='d-flex'>
-          <div class='header-content'></div>
-          <div class='header-close' @click='close'><span>×</span></div>
+        <div :style='contentStyle' class='vm-box'>
+
+          <slot name='header' v-if='!hideHeader'>
+            <div class='d-flex'>
+              <div class='header-content'></div>
+              <div class='header-close' @click='close'><span>×</span></div>
+            </div>
+            <hr>
+          </slot>
+
+          <slot/>
+
         </div>
-        <hr>
-      </slot>
 
-      <slot/>
+      </div>
 
     </div>
-
-  </div>
 </template>
 
 <script>
-import Positionable from './mixin/Positionable';
+import Modalable from '../mixin/Modalable';
+import Positionable from '../mixin/Positionable';
 
 export default {
-  name: 'VModalBox',
-  inject: {
-    closeModal : 'closeModal' ,
-  },
+  name: 'VSModalBox',
   mixins: [
+    Modalable ,
     Positionable ,
   ],
   props: {
+    // box part
     hideHeader : Boolean ,
     size : {
       type : String ,
@@ -79,6 +68,7 @@ export default {
     overflowY : String ,
   },
   computed: {
+    // box part
     contentStyle() {
       const obj = {
         borderRadius : this.borderRadius || '.3rem' ,
@@ -106,9 +96,6 @@ export default {
              this.size === 'auto' && 'auto' ||
              '500px' ;
     },
-  },
-  methods: {
-    close() { this.closeModal(); },
   },
 };
 </script>

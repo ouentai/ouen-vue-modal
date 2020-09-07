@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import Modalable from './mixin/Modalable';
-import Positionable from './mixin/Positionable';
+import Modalable from '../mixin/Modalable';
+import Positionable from '../mixin/Positionable';
 
 export default {
   name: 'VSModalPosition',

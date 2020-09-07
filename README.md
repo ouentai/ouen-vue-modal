@@ -229,7 +229,7 @@
 
 ## Advanced usage
 
-### Modalable.js @mixin folder
+### mixin : Modalable
 
   - This
     - is mixin object to add modal function to your components.
@@ -237,12 +237,12 @@
 
   - example
     ``` .javascript
-    import mixinName from 'vue-ouen-modal/mixin/Positionable' ;
+    import {Modalable} from 'vue-ouen-modal' ;
 
     export default {
       name: 'yourComponent',
       mixins: [
-        mixinName ,
+        Modalable ,
       ],
       ~~~~
     };
@@ -262,19 +262,19 @@
     ```
 
 
-### Positionable.js @mixin folder
+### mixin : Positionable
 
   - This
     - is mixin object to add position setting function to your component.
 
   - example
     ``` .javascript
-    import mixinName from 'vue-ouen-modal/mixin/Positionable' ;
+    import {Positionable} from 'vue-ouen-modal/mixin/Positionable' ;
 
     export default {
       name: 'yourComponent',
       mixins: [
-        mixinName ,
+        Positionable ,
       ],
       ~~~~
     };

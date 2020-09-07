@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import Modalable from './mixin/Modalable';
+import Modalable from '../mixin/Modalable';
 
 export default {
   name: 'VModal',
